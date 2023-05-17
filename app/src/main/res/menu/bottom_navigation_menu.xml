@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/news"
+        android:enabled="true"
+        android:icon="@drawable/ic_feed"
+        android:title="@string/news"
+    />
+    <item
+        android:id="@+id/notices"
+        android:enabled="true"
+        android:icon="@drawable/ic_overview"
+        android:title="@string/notices"
+    />
+    <item
+        android:id="@+id/closed_notices"
+        android:enabled="true"
+        android:icon="@drawable/ic_other_admission"
+        android:title="@string/closed_notices"
+        />
+    <item
+        android:id="@+id/systems"
+        android:enabled="true"
+        android:icon="@drawable/ic_grid_view"
+        android:title="@string/systems"
+    />
+</menu>
