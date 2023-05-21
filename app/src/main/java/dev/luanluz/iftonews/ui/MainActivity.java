@@ -1,4 +1,4 @@
-package dev.luanluz.iftonews;
+package dev.luanluz.iftonews.ui;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -9,14 +9,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import dev.luanluz.iftonews.R;
+import dev.luanluz.iftonews.ui.fragments.ClosedNoticesRssFragment;
+import dev.luanluz.iftonews.ui.fragments.NewsRssFragment;
+import dev.luanluz.iftonews.ui.fragments.NoticesRssFragment;
+import dev.luanluz.iftonews.ui.fragments.SystemsFragment;
+
 
 public class MainActivity extends AppCompatActivity
         implements BottomNavigationView.OnItemSelectedListener {
 
     private BottomNavigationView bottomNavigationView;
-    private final NewsFragment newsFragment = new NewsFragment();
-    private final NoticesFragment noticesFragment = new NoticesFragment();
-    private final ClosedNoticesFragment closedNoticesFragment = new ClosedNoticesFragment();
+    private final NewsRssFragment newsFragment = new NewsRssFragment(this);
+    private final NoticesRssFragment noticesFragment = new NoticesRssFragment(this);
+    private final ClosedNoticesRssFragment closedNoticesFragment = new ClosedNoticesRssFragment(this);
     private final SystemsFragment systemsFragment = new SystemsFragment();
 
     @Override
