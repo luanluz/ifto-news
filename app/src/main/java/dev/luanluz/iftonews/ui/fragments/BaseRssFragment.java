@@ -18,6 +18,7 @@ import java.util.List;
 import dev.luanluz.iftonews.R;
 import dev.luanluz.iftonews.model.RssItem;
 import dev.luanluz.iftonews.network.RssReader;
+import dev.luanluz.iftonews.ui.MainActivity;
 import dev.luanluz.iftonews.ui.adapters.RssCardAdapter;
 
 public abstract class BaseRssFragment extends Fragment {
@@ -39,7 +40,7 @@ public abstract class BaseRssFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        RssCardAdapter adapter = new RssCardAdapter(new ArrayList<>());
+        RssCardAdapter adapter = new RssCardAdapter(getActivity(), new ArrayList<>());
         recyclerView.setAdapter(adapter);
 
         RssReader rssReader = new RssReader();
