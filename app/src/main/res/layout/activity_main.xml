@@ -21,6 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:title="@string/app_name"
+            app:subtitle="subtitle"
+            app:subtitleTextAppearance="?attr/textAppearanceSubtitle1"
         />
     </com.google.android.material.appbar.AppBarLayout>
 
