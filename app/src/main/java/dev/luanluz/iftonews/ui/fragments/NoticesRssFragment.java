@@ -12,7 +12,7 @@ public class NoticesRssFragment extends BaseRssFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_notices;
+        return R.layout.fragment_rss_cards;
     }
 
     @Override
