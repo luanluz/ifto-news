@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import dev.luanluz.iftonews.R;
@@ -19,6 +20,7 @@ import dev.luanluz.iftonews.ui.fragments.SystemsFragment;
 public class MainActivity extends AppCompatActivity
         implements BottomNavigationView.OnItemSelectedListener {
 
+    private MaterialToolbar materialToolbar;
     private BottomNavigationView bottomNavigationView;
     private final NewsRssFragment newsFragment = new NewsRssFragment(this);
     private final NoticesRssFragment noticesFragment = new NoticesRssFragment(this);
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        materialToolbar = findViewById(R.id.topAppBar);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.news);
@@ -42,6 +45,8 @@ public class MainActivity extends AppCompatActivity
         int itemId = item.getItemId();
 
         if (itemId == R.id.news) {
+            materialToolbar.setSubtitle(R.string.news);
+
             getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragmentLayout, newsFragment)
@@ -49,6 +54,8 @@ public class MainActivity extends AppCompatActivity
             return true;
 
         } else if (itemId == R.id.notices) {
+            materialToolbar.setSubtitle(R.string.notices);
+
             getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragmentLayout, noticesFragment)
@@ -56,6 +63,8 @@ public class MainActivity extends AppCompatActivity
             return true;
 
         } else if (itemId == R.id.closed_notices) {
+            materialToolbar.setSubtitle(R.string.closed_notices);
+
             getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragmentLayout, closedNoticesFragment)
@@ -63,6 +72,8 @@ public class MainActivity extends AppCompatActivity
             return true;
 
         } else if (itemId == R.id.systems) {
+            materialToolbar.setSubtitle(R.string.systems);
+
             getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragmentLayout, systemsFragment)
