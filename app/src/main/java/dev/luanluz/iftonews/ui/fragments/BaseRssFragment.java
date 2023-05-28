@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -18,7 +19,6 @@ import java.util.List;
 import dev.luanluz.iftonews.R;
 import dev.luanluz.iftonews.model.RssItem;
 import dev.luanluz.iftonews.network.RssReader;
-import dev.luanluz.iftonews.ui.MainActivity;
 import dev.luanluz.iftonews.ui.adapters.RssCardAdapter;
 
 public abstract class BaseRssFragment extends Fragment {
@@ -43,6 +43,9 @@ public abstract class BaseRssFragment extends Fragment {
         RssCardAdapter adapter = new RssCardAdapter(getActivity(), new ArrayList<>());
         recyclerView.setAdapter(adapter);
 
+        ProgressBar progressBar = view.findViewById(R.id.progressIndicator);
+        progressBar.setVisibility(View.VISIBLE);
+
         RssReader rssReader = new RssReader();
         String rssUrl = geRssURL();
 
@@ -52,11 +55,13 @@ public abstract class BaseRssFragment extends Fragment {
             public void onSuccess(List<RssItem> items) {
                 adapter.setRssItems(items);
                 adapter.notifyDataSetChanged();
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
             public void onFailure(String errorMessage) {
                 Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.GONE);
             }
         });
 
