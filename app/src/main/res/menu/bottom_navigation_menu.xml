@@ -3,25 +3,25 @@
     <item
         android:id="@+id/news"
         android:enabled="true"
-        android:icon="@drawable/ic_feed"
+        android:icon="@drawable/selector_news"
         android:title="@string/news"
     />
     <item
         android:id="@+id/notices"
         android:enabled="true"
-        android:icon="@drawable/ic_overview"
+        android:icon="@drawable/selector_notices"
         android:title="@string/notices"
     />
     <item
         android:id="@+id/closed_notices"
         android:enabled="true"
-        android:icon="@drawable/ic_other_admission"
+        android:icon="@drawable/selector_closed_notices"
         android:title="@string/closed_notices"
         />
     <item
         android:id="@+id/systems"
         android:enabled="true"
-        android:icon="@drawable/ic_grid_view"
+        android:icon="@drawable/selector_systems"
         android:title="@string/systems"
     />
 </menu>
