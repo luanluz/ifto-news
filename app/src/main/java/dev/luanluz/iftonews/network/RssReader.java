@@ -54,7 +54,7 @@ public class RssReader {
                 if (rssItems != null) {
                     listener.onSuccess(rssItems);
                 } else {
-                    listener.onFailure("Failed to read RSS feed.");
+                    listener.onFailure("Falha ao ler o feed RSS.");
                 }
             }
         }.execute();

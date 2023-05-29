@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -46,6 +47,8 @@ public abstract class BaseRssFragment extends Fragment {
         ProgressBar progressBar = view.findViewById(R.id.progressIndicator);
         progressBar.setVisibility(View.VISIBLE);
 
+        ImageView imageView = view.findViewById(R.id.failedToReadRssImage);
+
         RssReader rssReader = new RssReader();
         String rssUrl = geRssURL();
 
@@ -61,6 +64,7 @@ public abstract class BaseRssFragment extends Fragment {
             @Override
             public void onFailure(String errorMessage) {
                 Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show();
+                imageView.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.GONE);
             }
         });

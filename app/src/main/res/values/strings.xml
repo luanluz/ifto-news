@@ -7,4 +7,5 @@
     <string name="rss_title">Título</string>
     <string name="rss_description">Descrição</string>
     <string name="rss_pubdate">Data</string>
+    <string name="failed_to_read_rss">Failed to read RSS</string>
 </resources>
