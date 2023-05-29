@@ -1,5 +1,7 @@
 package dev.luanluz.iftonews.ui;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity
     private final NoticesRssFragment noticesFragment = new NoticesRssFragment(this);
     private final ClosedNoticesRssFragment closedNoticesFragment = new ClosedNoticesRssFragment(this);
     private final SystemsFragment systemsFragment = new SystemsFragment();
+    private SharedPreferences preferences;
 
     @Override
     protected void
@@ -33,10 +36,13 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        preferences = getSharedPreferences("ifto_news", Context.MODE_PRIVATE);
+
         materialToolbar = findViewById(R.id.topAppBar);
+
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnItemSelectedListener(this);
-        bottomNavigationView.setSelectedItemId(R.id.news);
+        bottomNavigationView.setSelectedItemId(getSelectedNavigationItem());
     }
 
     @Override
@@ -46,6 +52,7 @@ public class MainActivity extends AppCompatActivity
 
         if (itemId == R.id.news) {
             materialToolbar.setSubtitle(R.string.news);
+            setSelectedNavigationItem(R.id.news);
 
             getSupportFragmentManager()
                 .beginTransaction()
@@ -55,6 +62,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (itemId == R.id.notices) {
             materialToolbar.setSubtitle(R.string.notices);
+            setSelectedNavigationItem(R.id.notices);
 
             getSupportFragmentManager()
                 .beginTransaction()
@@ -64,6 +72,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (itemId == R.id.closed_notices) {
             materialToolbar.setSubtitle(R.string.closed_notices);
+            setSelectedNavigationItem(R.id.closed_notices);
 
             getSupportFragmentManager()
                 .beginTransaction()
@@ -73,6 +82,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (itemId == R.id.systems) {
             materialToolbar.setSubtitle(R.string.systems);
+            setSelectedNavigationItem(R.id.systems);
 
             getSupportFragmentManager()
                 .beginTransaction()
@@ -82,5 +92,15 @@ public class MainActivity extends AppCompatActivity
         }
 
         return false;
+    }
+
+    private int getSelectedNavigationItem() {
+        return Integer.parseInt(preferences.getString("selectedNavigationItem", Integer.toString(R.id.news)));
+    }
+
+    private void setSelectedNavigationItem(int selectedNavigationItem) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("selectedNavigationItem", Integer.toString(selectedNavigationItem));
+        editor.apply();
     }
 }
